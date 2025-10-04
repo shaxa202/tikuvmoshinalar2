@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunyo tikuv mashinklari</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(90deg, #2c3e50, #4a6491);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 180px;
+            height: 60px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 20px;
+        }
+
+        /* Навигация */
+        nav {
+            background: #34495e;
+            padding: 10px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 10px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Баннер */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/атлас\ Фото\ с\ livemaster.ru.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Категории */
+        .categories {
+            margin: 40px 0;
+                        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/виды\ Фото\ с\ olx.uz.png');
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-img {
+            height: 0px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            margin-bottom: 10px;
+            color: #30385a;
+        }
+
+        /* Товары */
+        .products {
+            margin: 40px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .product-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .product-btn:hover {
+            background: #2980b9;
+        }
+
+        /* Страница категории */
+        .category-page {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .back-btn {
+            background: #7f8c8d;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #636e72;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgb(255, 249, 249);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            /* top: 15px; */
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .phone-number {
+            display: block;
+            background: #2ecc71;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .phone-number:hover {
+            background: #27ae60;
+        }
+
+        /* Подвал */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #e74c3c;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            .modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh; /* Ограничение по высоте */
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFade 0.3s;
+    overflow-y: auto; /* Добавляем прокрутку */
+    margin: 20px; /* Отступы для маленьких экранов */
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+    z-index: 1001; /* Чтобы кнопка была поверх контента */
+    background: rgba(255, 255, 255, 0.9); /* Фон для лучшей видимости */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu li {
+                margin: 5px 0;
+            }
+            
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            .category-grid, .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-grid, .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                padding: 50px 20px;
+            }
+            .modal-content {
+        width: 95%;
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .modal-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .modal-price {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .phone-number {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+            .section-title {
+                font-size: 1.7rem;
+            }
+        
+
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    Dunyo tikuv mashinklari
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#" data-category="all">Barcha mahsulotlar</a></li>
+                <li><a href="#" data-category="overloklar">Overloklar</a></li>
+                <li><a href="#" data-category="togri-choklar">To'g'ri choklar</a></li>
+                <li><a href="#" data-category="dazmollar">Dazmollar</a></li>
+                <li><a href="#" data-category="qaychilar">Qaychilar</a></li>
+                <li><a href="#" data-category="ehtiyot-qismlari">Ehtiyot qismlari</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <div id="main-page">
+        <!-- Баннер -->
+        <section class="banner">
+            <div class="container">
+                <h1>Professional tikuvchilik uskunalari</h1>
+                <p>Eng yaxshi tikuvchilik mashinalari, overlocklar, dazmollar va boshqa aksessuarlar faqat bizda!</p>
+            </div>
+        </section>
+
+        <!-- Категории -->
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title">Kategoriyalar</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="overloklar">
+                        <div class="category-img" style="background-image: url('img/overloklar.jpg')"></div>
+                        <div class="category-content">
+                            <h3>Overloklar</h3>
+                            <p>Professional overlok mashinalari</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="togri-choklar">
+                        <div class="category-img" style="background-image: url('img/togri-choklar.jpg')"></div>
+                        <div class="category-content">
+                            <h3>To'g'ri choklar</h3>
+                            <p>To'g'ri chok mashinalari</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="dazmollar">
+                        <div class="category-img" style="background-image: url('img/dazmollar.jpg')"></div>
+                        <div class="category-content">
+                            <h3>Dazmollar</h3>
+                            <p>Har xil turdagi dazmollar</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="qaychilar">
+                        <div class="category-img" style="background-image: url('img/qaychilar.jpg')"></div>
+                        <div class="category-content">
+                            <h3>Qaychilar</h3>
+                            <p>Professional tikuvchilik qaychilari</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="ehtiyot-qismlari">
+                        <div class="category-img" style="background-image: url('img/ehtiyot-qismlari.jpg')"></div>
+                        <div class="category-content">
+                            <h3>Ehtiyot qismlari</h3>
+                            <p>Mashinalar uchun ehtiyot qismlari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Товары -->
+        
+    </div>
+
+    <!-- Страницы категорий -->
+    <div id="category-pages">
+        <!-- Страница Overloklar -->
+        <div class="category-page" id="overloklar-page">
+            <div class="container">
+                <button class="back-btn">Orqaga</button>
+                <h2 class="section-title">Overloklar</h2>
+                <div class="product-grid" id="overloklar-container">
+                    <!-- Товары категории Overloklar -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница To'g'ri choklar -->
+        <div class="category-page" id="togri-choklar-page">
+            <div class="container">
+                <button class="back-btn">Orqaga</button>
+                <h2 class="section-title">To'g'ri choklar</h2>
+                <div class="product-grid" id="togri-choklar-container">
+                    <!-- Товары категории To'g'ri choklar -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница Dazmollar -->
+        <div class="category-page" id="dazmollar-page">
+            <div class="container">
+                <button class="back-btn">Orqaga</button>
+                <h2 class="section-title">Dazmollar</h2>
+                <div class="product-grid" id="dazmollar-container">
+                    <!-- Товары категории Dazmollar -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница Qaychilar -->
+        <div class="category-page" id="qaychilar-page">
+            <div class="container">
+                <button class="back-btn">Orqaga</button>
+                <h2 class="section-title">Qaychilar</h2>
+                <div class="product-grid" id="qaychilar-container">
+                    <!-- Товары категории Qaychilar -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница Ehtiyot qismlari -->
+        <div class="category-page" id="ehtiyot-qismlari-page">
+            <div class="container">
+                <button class="back-btn">Orqaga</button>
+                <h2 class="section-title">Ehtiyot qismlari</h2>
+                <div class="product-grid" id="ehtiyot-qismlari-container">
+                    <!-- Товары категории Ehtiyot qismlari -->
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Модальное окно -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-img" id="modal-img"></div>
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-description" id="modal-description"></p>
+            <div class="modal-price" id="modal-price"></div>
+            <a href="tel:+99890900841551" class="phone-number">Qo'ng'iroq qilish: +998 90 084 15 51</a>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Biz haqimizda</h3>
+                    <p>Biz professional tikuvchilik mashinalari va aksessuarlarini sotamiz. Sizga eng yaxshi mahsulotlarni taklif qilamiz.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Aloqa</h3>
+                    <p>Manzil: Buxoro shaxar, Kalxoz bozor</p>
+                    <p>Telefon: +998 90 084 15 51</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Ish vaqtlari</h3>
+                    <p>Har kuni: 9:00 - 17:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2017 Dunyo tikuv mashinklari. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ДАННЫЕ О ТОВАРАХ - ДОБАВЛЯЙТЕ ТОВАРЫ ЗДЕСЬ
+        const products = [
+            // Overloklar
+            {
+                id: 1,
+                name: "NANBANG 800D",
+                category: "overloklar",
+                price: "5,000,000 so'm",
+                image: "img/800d.jpeg",
+                description: "4 ipli professional overlok mashinasi. Tezlik: 5500 aylanish/min. Avtomatik moylash tizimi."
+            },
+            {
+             id: 2,
+                name: "LEJIANG 800D",
+                category: "overloklar",
+                price: "5,000,000 so'm",
+                image: "img/lej over.jpeg",
+                description: "4 ipli professional overlok mashinasi. Tezlik: 5500 aylanish/min. Avtomatik moylash tizimi KAFOLAT: 5 YIL",
+
+                // id: ,
+                // name: "",
+                // category: "",
+                // price: "",
+                // image: "",
+                // description: "",
+            },
+            {
+                
+            },
+
+            // To'g'ri choklar
+            {
+                id: 4,
+                name: "NANBANG D5 ORIGINAL",
+                category: "togri-choklar",
+                price: "3,600,000 so'm",
+                image: "img/d5.jpg",
+                description: "Sanoat tikuvchilik mashinasi. Tezlik: 5000 aylanish/min. Raqamli boshqaruv. KAFOLAT: 5 YIL"
+            },
+            {
+                id: 5,
+                name: "JACK F5 ORIGINAL",
+                category: "togri-choklar",
+                price: "3,500,000 so'm",
+                image: "img/f5.jpeg",
+                description: "To'g'ri chok mashinasi. Tezlik: 4500 aylanish/min. KAFOLAT: 3 YIL "
+            },
+
+            {
+                id: 6,
+                name: "BAOYU ORIGINAL",
+                category: "togri-choklar",
+                price: "3,200,000 so'm",
+                image: "img/baoyu.jpg",
+                description: "To'g'ri chok mashinasi. Tezlik: 3000 aylanish/min. KAFOLAT: 3 YIL",
+            },
+            {
+                id: 7,
+                name: "LEJIANG C503",
+                category: "togri-choklar",
+                price: "3,600,000 so'm",
+                image: "img/lejiag.jpg",
+                description: "Sanoat tikuvchilik mashinasi. Tezlik: 5000 aylanish/min. Raqamli boshqaruv. KAFOLAT: 5 YIL",
+            },
+            {
+                id: 12 ,
+                name: "DISON",
+                category: "togri-choklar",
+                price: "3,200,000 so'm",
+                image: "img/dison.jpg",
+                description: "To'g'ri chok mashinasi. Tezlik: 4000 aylanish/min. KAFOLAT: 3 YIL",
+            },
+            // Dazmollar
+            {
+                id: 8,
+                name: "JACK DAZMOL ORIGINAL",
+                category: "dazmollar",
+                price: "700,000 so'm",
+                image: "img/utyug jack.webp",
+                description: "Professional dazmol mashinasi. 12 dazmol boshi. Elektr boshqaruv."
+            },
+            {
+                id: 9,
+                name: "PENGUIN DAZMOL ORIGINAL",
+                category: "dazmollar",
+                price: "500,000 so'm",
+                image: "img/pengiun.webp",
+                description: "Dazmol mashinasi. 8 dazmol boshi. Dasturiy boshqaruv."
+            },
+
+            // Qaychilar
+            {
+                id: 10,
+                name: "JASS QAYCHI",
+                category: "qaychilar",
+                price: "100,000 so'm",
+                image: "img/qaychi.jpg",
+                description: "10-11 dyuymli professional tikuvchilik qaychisi. Zanglamas po'latdan tayyorlangan."
+            },
+            {
+                
+            },
+
+            // Ehtiyot qismlari
+            {
+                id: 11,
+                name: "Igna to'plami",
+                category: "ehtiyot-qismlari",
+                price: "15,000 so'm",
+                image: "img/suzan.webp",
+                description: "Har xil o'lchamdagi ignalar to'plami. 10 dona."
+            },
+            {
+               
+            },
+
+        
+            // ДОБАВЛЯЙТЕ НОВЫЕ ТОВАРЫ ЗДЕСЬ ПО ОБРАЗЦУ:
+            /*
+            {
+                id: 14, // Увеличивайте ID на 1 для каждого нового товара
+                name: "Название товара",
+                category: "категория", // overloklar, togri-choklar, dazmollar, qaychilar, ehtiyot-qismlari, utuglar
+                price: "цена в so'm",
+                image: "img/ваше-изображение.jpg",
+                description: "Описание товара"
+            },
+            */
+        ];
+
+        // Элементы DOM
+        const mainPage = document.getElementById('main-page');
+        const categoryPages = document.getElementById('category-pages');
+        const productContainer = document.getElementById('product-container');
+        const modal = document.getElementById('product-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalPrice = document.getElementById('modal-price');
+        const closeModal = document.querySelector('.close-modal');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const backButtons = document.querySelectorAll('.back-btn');
+
+        // Функция для отображения товаров на главной странице
+        function displayProducts() {
+            productContainer.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-img" style="background-image: url('${product.image}')"></div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <button class="product-btn" data-id="${product.id}">Batafsil ma'lumot</button>
+                    </div>
+                `;
+                productContainer.appendChild(productCard);
+            });
+            
+            // Добавляем обработчики событий для кнопок товаров
+            document.querySelectorAll('.product-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    openProductModal(productId);
+                });
+            });
+        }
+
+        // Функция для отображения товаров по категориям
+        function displayProductsByCategory(category) {
+            const container = document.getElementById(`${category}-container`);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            const categoryProducts = products.filter(product => product.category === category);
+            
+            if (categoryProducts.length === 0) {
+                container.innerHTML = '<p>Ushbu kategoriyada hali mahsulotlar mavjud emas.</p>';
+                return;
+            }
+            
+            categoryProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-img" style="background-image: url('${product.image}')"></div>
+                    <div class="product-content">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <button class="product-btn" data-id="${product.id}">Batafsil ma'lumot</button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+            
+            // Добавляем обработчики событий для кнопок товаров
+            document.querySelectorAll('.product-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    openProductModal(productId);
+                });
+            });
+        }
+
+        // Функция для открытия модального окна с информацией о товаре
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                modalImg.style.backgroundImage = `url('${product.image}')`;
+                modalTitle.textContent = product.name;
+                modalDescription.textContent = product.description;
+                modalPrice.textContent = product.price;
+                modal.style.display = 'flex';
+            }
+        }
+
+        // Функция для открытия страницы категории
+        function openCategoryPage(category) {
+            mainPage.style.display = 'none';
+            categoryPages.style.display = 'block';
+            
+            // Скрываем все страницы категорий
+            document.querySelectorAll('.category-page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Показываем нужную страницу категории
+            const categoryPage = document.getElementById(`${category}-page`);
+            if (categoryPage) {
+                categoryPage.style.display = 'block';
+                displayProductsByCategory(category);
+            }
+        }
+
+        // Функция для возврата на главную страницу
+        function backToMain() {
+            mainPage.style.display = 'block';
+            categoryPages.style.display = 'none';
+        }
+
+        // Обработчики событий для навигации
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-category');
+                
+                if (category === 'all') {
+                    backToMain();
+                } else {
+                    openCategoryPage(category);
+                }
+            });
+        });
+
+        // Обработчики событий для карточек категорий
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                openCategoryPage(category);
+            });
+        });
+
+        // Обработчики событий для кнопок "Назад"
+        backButtons.forEach(button => {
+            button.addEventListener('click', backToMain);
+        });
+
+        // Закрытие модального окна
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts();
+        });
+    </script>
+</body>
+</html>
